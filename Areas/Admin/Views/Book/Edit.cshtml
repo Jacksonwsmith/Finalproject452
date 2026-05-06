@@ -1,0 +1,136 @@
+﻿@model BookWithCategoriesVM
+
+
+<h1>Update Book</h1>
+
+<div class="boarder col-md-10 mx-auto">
+
+    <form asp-action="Edit" enctype="multipart/form-data">
+
+
+        <input asp-for="Book.BookId" hidden />
+
+        <input asp-for="Book.ImgUrl" hidden />
+
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="form-group m-4">
+            <label asp-for="Book.BookTitle" class="control-label col-md-2"> </label>
+            <div>
+                <input asp-for="Book.BookTitle" class="form-control col-md-10" />
+                <span asp-validation-for="Book.BookTitle" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group m-4">
+            <label asp-for="Book.Author" class="control-label col-md-2"> </label>
+            <div>
+                <input asp-for="Book.Author" class="form-control col-md-10" />
+                <span asp-validation-for="Book.Author" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group row m-4">
+            <label asp-for="Book.Description" class="control-label col-md-2"> </label>
+            <div>
+                <input asp-for="Book.Description" class="form-control col-md-10" />
+                <span asp-validation-for="Book.Description" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group m-4">
+            <label asp-for="Book.Price" class="control-label col-md-2"> </label>
+            <div>
+                <input asp-for="Book.Price" class="form-control col-md-10" />
+                <span asp-validation-for="Book.Price" class="text-danger"></span>
+            </div>
+        </div>
+
+        
+
+
+
+
+
+
+         @* <div class="form-group m-4">
+            <label asp-for="CategoryID" class="control-label col-md-2"> </label>
+            <div>
+                <select asp-for="CategoryID" class="form-control" asp-items="ViewBag.ListOfCategories">
+
+                    <option disabled selected>Select a Category</option>
+
+                </select>
+                <span asp-validation-for="CategoryID" class="text-danger"></span>
+            </div>
+        </div> *@
+
+
+
+
+        @* <div class="form-group m-4">
+            <label asp-for="CategoryID" class="control-label col-md-2"> </label>
+            <div>
+                <select asp-for="CategoryID" class="form-control" asp-items="@ViewData["ListOfCategoriesVD"] as IEnumerable<SelectListItem>">
+
+                    <option disabled selected>Select a Category</option>
+
+                </select>
+                <span asp-validation-for="CategoryID" class="text-danger"></span>
+            </div>
+        </div> *@
+
+
+
+
+
+
+        <div class="form-group m-4">
+            <label asp-for="Book.CategoryID" class="control-label col-md-2"> </label>
+            <div>
+                <select asp-for="Book.CategoryID" class="form-control" asp-items="@Model.ListOfCategories">
+
+                    <option disabled selected>Select a Category</option>
+
+                </select>
+                <span asp-validation-for="Book.CategoryID" class="text-danger"></span>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-group m-4">
+            <label asp-for="Book.ImgUrl" class="control-label col-md-2"> </label>
+            <div>
+                <input type="file" name="imgFile" class="form-control col-md-10" />
+                
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="form-group row m-4">
+            <input type="submit" value="Update Book" class="form-control btn btn-outline-primary" />
+        </div>
+    </form>
+
+
+    @section Scripts
+    {
+
+    <partial name="_ValidationScriptsPartial" />
+
+    }
+
+</div>

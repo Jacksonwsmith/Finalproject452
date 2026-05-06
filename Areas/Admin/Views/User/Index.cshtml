@@ -1,0 +1,41 @@
+@model List<ApplicationUser>
+
+<h1>User List</h1>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Role</th>
+            <th>Lockout End Date</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var eachUser in Model)
+        {
+            <tr>
+                <td><a asp-action="EditUserRole" asp-route-id="@eachUser.Id">@eachUser.Name</a></td>
+                <td>@eachUser.Email</td>
+                <td>@eachUser.PhoneNumber</td>
+                <td>
+                    @eachUser.RoleName
+                </td>
+                <td>
+                    @if (eachUser.LockoutEnd != null && eachUser.LockoutEnd > DateTime.Now)
+                    {
+                        <span>Locked Until @eachUser.LockoutEnd.Value.ToLocalTime().ToString("g")</span>
+                    }
+                    else
+                    {
+                        <span>Account is Unlocked</span>
+                    }
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

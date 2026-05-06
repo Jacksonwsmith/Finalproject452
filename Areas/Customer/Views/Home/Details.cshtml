@@ -1,0 +1,67 @@
+﻿@model CartItem
+
+<div class="row m-5 border-2 shadow border-rounded">
+
+    <div class="card text-center">
+        <div class="row m-3">
+
+            <div class="col-4">
+
+                <img src="@Model.Book.ImgUrl" class="img-fluid rounded" style="max-height:400px" />
+
+
+            </div>
+
+
+            <div class="col-8 text-start d-flex flex-column">
+
+                <p class="card-title h1" style="color:brown">
+                    @Model.Book.BookTitle
+                </p>
+
+                <p class="card-text text-muted">
+                    @Model.Book.Author
+                </p>
+
+                <p class="card-text text-start">
+                    @Model.Book.Description
+                </p>
+
+                <div class="mt-auto text-start">
+
+                    <h4>$@Model.Book.Price</h4>
+
+                    <form asp-action="AddToCart" method="post">
+
+                        <input type="hidden" asp-for="@Model.BookId" />
+                        <input type="number" asp-for="@Model.Quantity" min="1" class="form-control" style="width:100px" />
+
+
+
+                        <button type="submit" class="btn btn-primary mt-2">Add to Cart</button>
+                            
+                    </form>
+
+
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+</div>

@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<Book>
+
+<h1>Books in our Store</h1>
+
+<div class="container">
+    <div class="row">
+        @foreach (var eachBook in Model)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm h-100">
+                    <img class="card-img-top"
+                         src="@eachBook.ImgUrl"
+                         style="height:200px; object-fit:cover" />
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title" style="color:brown">
+                            @eachBook.BookTitle
+                        </h5>
+
+                        <p class="card-text text-muted">
+                            @eachBook.Author<br />
+                            @eachBook.Description
+                        </p>
+
+                        <div class="mt-auto">
+                            <p class="fw-bold mb-2">
+                                $@eachBook.Price.ToString("0.00")
+                            </p>
+
+                            <a asp-controller="Home"
+                               asp-action="Details"
+                               asp-route-id="@eachBook.BookId"
+                               class="btn btn-primary w-100">
+                                Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
